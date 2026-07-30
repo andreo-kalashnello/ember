@@ -1,6 +1,7 @@
 import { Award, Clock3, MapPin, Mouse, Phone, Star } from "lucide-react";
 import { EmberCanvas } from "./atmosphere";
 import { ButtonLink } from "./ui";
+import Image from "next/image";
 
 const highlights = [
   { icon: Clock3, label: "Opening hours", value: "Daily 17:00 – 23:30" },
@@ -12,10 +13,24 @@ const highlights = [
 
 export function Hero() {
   return (
-    <section className="hero" id="top">
-      <div className="hero-glow" aria-hidden="true" />
+    <section className="hero relative" id="top">
+
+      <div className="hero-bg absolute w-full overflow-hidden">
+        <Image
+          src="/images/hero.jpg"
+          alt="Modern European cuisine"
+          fill
+          priority
+          quality={80}
+          className="object-cover"
+        />
+      </div>
+
+      <div className="hero-overlay absolute w-full pointer-events-none" aria-hidden="true" />
+
+      <div className="hero-glow relative" aria-hidden="true" />
       <EmberCanvas />
-      <div className="container hero-inner">
+      <div className="container hero-inner relative">
         <div className="hero-copy" data-stagger>
           <p className="eyebrow" data-reveal="up">Modern European cuisine</p>
           <h1 data-reveal="up">Fire.<br /><span>Flavor.</span><br />Moments.</h1>
